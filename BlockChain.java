@@ -16,8 +16,9 @@ public class BlockChain {
         Block previousBlock = chain.get(chain.size()-1);
 
         Block newBlock = new Block(chain.size(), data, previousBlock.hash);
-
+        // System.out.println("Starting mining...");
         newBlock.mineBlock(4);
+        // System.out.println("Finished mining...");
 
         chain.add(newBlock);
     }

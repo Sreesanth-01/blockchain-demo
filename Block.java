@@ -18,7 +18,7 @@ public class Block {
     }
 
     public String calculateHash(){
-        String info = blockNumber+data+previousHash;
+        String info = blockNumber+data+previousHash+nonce;
 
         return sha256(info);
     }
