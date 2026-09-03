@@ -8,10 +8,11 @@ public class Block {
 
     int nonce;
 
-    public Block(int blockNumber, String data, String previousHash){
+    public Block(int blockNumber, String data, String previousHash,int nonce){
         this.blockNumber = blockNumber;
         this.data = data;
         this.previousHash = previousHash;
+        this.nonce = nonce;
 
         this.hash = calculateHash();
     }
@@ -36,5 +37,16 @@ public class Block {
         catch(Exception e){
             throw new RuntimeException(e);
         }
+    }
+
+    public void mineBlock(int difficulty){
+        String target = "0".repeat(difficulty);
+
+        while(!hash.startsWith(target)){
+            nonce++;
+            hash = calculateHash();
+        }
+
+        System.out.println("Block mined: "+hash);
     }
 }
