@@ -7,6 +7,7 @@ public class BlockChain {
 
         Block genesis = new Block(0, "Initial Block", "0");
 
+
         chain.add(genesis);
     }
 
@@ -15,6 +16,8 @@ public class BlockChain {
         Block previousBlock = chain.get(chain.size()-1);
 
         Block newBlock = new Block(chain.size(), data, previousBlock.hash);
+
+        newBlock.mineBlock(4);
 
         chain.add(newBlock);
     }

@@ -8,11 +8,11 @@ public class Block {
 
     int nonce;
 
-    public Block(int blockNumber, String data, String previousHash,int nonce){
+    public Block(int blockNumber, String data, String previousHash){
         this.blockNumber = blockNumber;
         this.data = data;
         this.previousHash = previousHash;
-        this.nonce = nonce;
+        this.nonce = 0;
 
         this.hash = calculateHash();
     }
