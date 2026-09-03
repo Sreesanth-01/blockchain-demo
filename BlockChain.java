@@ -24,12 +24,14 @@ public class BlockChain {
 
             Block currentBlock = chain.get(i);
             Block previousBlock = chain.get(i-1);
-
+            //checking if the current block's hash was changed
             if(!currentBlock.hash.equals(currentBlock.calculateHash())){
+                System.out.print("Block Data Changed!");
                 return false;
             }
-
+            //checking if the chain is still valid
             if(!currentBlock.previousHash.equals(previousBlock.hash)){
+                System.out.println("Chain Broken!");
                 return false;
             }
 

@@ -6,6 +6,8 @@ public class Block {
     String hash;
     String previousHash;
 
+    int nonce;
+
     public Block(int blockNumber, String data, String previousHash){
         this.blockNumber = blockNumber;
         this.data = data;

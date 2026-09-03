@@ -15,7 +15,7 @@ public class Main {
         System.out.println("Added Fourth Block");
 
          blockChain.addBlock("Fifth Block");
-        System.out.println("Added Fifith Block");
+        System.out.println("Added Fifth Block");
 
         System.out.println("##################");
 
@@ -26,6 +26,9 @@ public class Main {
             System.out.println("Current block's hash: "+block.hash);
             System.out.println("---------------------");
         }
+
+        // blockChain.chain.get(1).data="Changed Data";
+        System.out.println("Blockchain Valid: "+blockChain.isChainValid());
 
     }
 }
