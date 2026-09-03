@@ -18,4 +18,23 @@ public class BlockChain {
 
         chain.add(newBlock);
     }
+
+    public boolean isChainValid(){
+        for(int i=1;i<chain.size();i++){
+
+            Block currentBlock = chain.get(i);
+            Block previousBlock = chain.get(i-1);
+
+            if(!currentBlock.hash.equals(currentBlock.calculateHash())){
+                return false;
+            }
+
+            if(!currentBlock.previousHash.equals(previousBlock.hash)){
+                return false;
+            }
+
+        }
+            
+        return true;
+    }
 }

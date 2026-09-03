@@ -17,6 +17,8 @@ public class Main {
          blockChain.addBlock("Fifth Block");
         System.out.println("Added Fifith Block");
 
+        System.out.println("##################");
+
         for(Block block:blockChain.chain){
             System.out.println("Block Number(Index): "+block.blockNumber);
             System.out.println("Data: "+block.data);
