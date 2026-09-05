@@ -19,9 +19,9 @@ public class Main {
 
         HoneyBatch batch1 = new HoneyBatch("001", "Krishna", "HIVE-101", "Coimbatore, Tamil Nadu", "WildFlower", 25, "2026-09-05");
 
-        HoneyEvent event1 = new HoneyEvent(batch1.batchId, "HARVESTED", "25 kg harvested from Hive H-101","2026-09-05 10:30");
-        HoneyEvent event2 = new HoneyEvent(batch1.batchId, "QUALITY_TESTED", "Quality test passes","2026-09-06 12:00");
-        HoneyEvent event3 = new HoneyEvent(batch1.batchId, "PACKAGED", "25 kg packaged into 50 jars","2026-09-07 6:00");
+        HoneyEvent event1 = new HoneyEvent(batch1.batchId, "HARVESTED","Beekeeper", "25 kg harvested from Hive H-101","2026-09-05 10:30");
+        HoneyEvent event2 = new HoneyEvent(batch1.batchId, "QUALITY_TESTED","ABC Labs", "Quality test passes","2026-09-06 12:00");
+        HoneyEvent event3 = new HoneyEvent(batch1.batchId, "PACKAGED", "Processor","25 kg packaged into 50 jars","2026-09-07 6:00");
 
         blockChain.addBlock(event1);
         blockChain.addBlock(event2);
