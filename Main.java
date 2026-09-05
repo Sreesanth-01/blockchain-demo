@@ -2,20 +2,26 @@ public class Main {
     public static void main(String[] args){
         BlockChain blockChain = new BlockChain();
 
-        blockChain.addBlock("First Block");
-        System.out.println("Added First Block");
+        // blockChain.addBlock("First Block");
+        // System.out.println("Added First Block");
 
-        blockChain.addBlock("Second Block");
-        System.out.println("Added Second Block");
+        // blockChain.addBlock("Second Block");
+        // System.out.println("Added Second Block");
 
-        blockChain.addBlock("Third Block");
-        System.out.println("Added Third Block");
+        // blockChain.addBlock("Third Block");
+        // System.out.println("Added Third Block");
 
-         blockChain.addBlock("Fourth Block");
-        System.out.println("Added Fourth Block");
+        //  blockChain.addBlock("Fourth Block");
+        // System.out.println("Added Fourth Block");
 
-         blockChain.addBlock("Fifth Block");
-        System.out.println("Added Fifth Block");
+        //  blockChain.addBlock("Fifth Block");
+        // System.out.println("Added Fifth Block");
+
+        HoneyEvent event1 = new HoneyEvent("001", "HARVESTED", "25 kg harvested from Hive H-101");
+        HoneyEvent event2 = new HoneyEvent("001", "QUALITY_TESTED", "Quality test passes");
+
+        blockChain.addBlock(event1.toString());
+        blockChain.addBlock(event2.toString());
 
         System.out.println("##################");
 
