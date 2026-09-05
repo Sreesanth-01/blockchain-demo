@@ -5,7 +5,7 @@ public class BlockChain {
 
     public BlockChain(){
 
-        HoneyEvent genesisEvent = new HoneyEvent("GENESIS", "GENESIS", "Honey Chain started");
+        HoneyEvent genesisEvent = new HoneyEvent("GENESIS", "GENESIS", "Honey Chain started","NILL");
 
         Block genesis = new Block(0, genesisEvent ,"0");
 
