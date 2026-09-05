@@ -2,13 +2,13 @@ import java.security.MessageDigest;
 
 public class Block {
     int blockNumber;
-    String data;
+    HoneyEvent data;
     String hash;
     String previousHash;
 
     int nonce;
 
-    public Block(int blockNumber, String data, String previousHash){
+    public Block(int blockNumber, HoneyEvent data, String previousHash){
         this.blockNumber = blockNumber;
         this.data = data;
         this.previousHash = previousHash;
@@ -18,7 +18,7 @@ public class Block {
     }
 
     public String calculateHash(){
-        String info = blockNumber+data+previousHash+nonce;
+        String info = blockNumber+data.toString()+previousHash+nonce;
 
         return sha256(info);
     }

@@ -19,9 +19,11 @@ public class Main {
 
         HoneyEvent event1 = new HoneyEvent("001", "HARVESTED", "25 kg harvested from Hive H-101");
         HoneyEvent event2 = new HoneyEvent("001", "QUALITY_TESTED", "Quality test passes");
+        HoneyEvent event3 = new HoneyEvent("001", "PACKAGED", "25 kg packaged into 50 jars");
 
-        blockChain.addBlock(event1.toString());
-        blockChain.addBlock(event2.toString());
+        blockChain.addBlock(event1);
+        blockChain.addBlock(event2);
+        blockChain.addBlock(event3);
 
         System.out.println("##################");
 

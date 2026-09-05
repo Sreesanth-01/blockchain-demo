@@ -5,17 +5,19 @@ public class BlockChain {
 
     public BlockChain(){
 
-        Block genesis = new Block(0, "Initial Block", "0");
+        HoneyEvent genesisEvent = new HoneyEvent("GENESIS", "GENESIS", "Honey Chain started");
 
+        Block genesis = new Block(0, genesisEvent ,"0");
 
         chain.add(genesis);
     }
 
-    public void addBlock(String data){
+
+    public void addBlock(HoneyEvent event){
 
         Block previousBlock = chain.get(chain.size()-1);
 
-        Block newBlock = new Block(chain.size(), data, previousBlock.hash);
+        Block newBlock = new Block(chain.size(), event, previousBlock.hash);
         // System.out.println("Starting mining...");
         newBlock.mineBlock(4);
         // System.out.println("Finished mining...");
