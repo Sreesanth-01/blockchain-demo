@@ -9,35 +9,25 @@ public class Main {
 
         PrivateKey privateKey = keys.getPrivate();
 
-        // blockChain.addBlock("First Block");
-        // System.out.println("Added First Block");
-
-        // blockChain.addBlock("Second Block");
-        // System.out.println("Added Second Block");
-
-        // blockChain.addBlock("Third Block");
-        // System.out.println("Added Third Block");
-
-        //  blockChain.addBlock("Fourth Block");
-        // System.out.println("Added Fourth Block");
-
-        //  blockChain.addBlock("Fifth Block");
-        // System.out.println("Added Fifth Block");
 
         HoneyBatch batch1 = new HoneyBatch("001", "Krishna", "HIVE-101", "Coimbatore, Tamil Nadu", "WildFlower", 25, "2026-09-05");
 
         HoneyEvent event1 = new HoneyEvent(batch1.batchId, "HARVESTED","Beekeeper", "25 kg harvested from Hive H-101","2026-09-05 10:30");
-        event1.signEvent(privateKey);
+        event1.signEvent(privateKey,keys.getPublic());
 
-        boolean signatureValid = event1.verifySignature(keys.getPublic());
+        boolean signatureValid = event1.verifySignature();
 
-        System.out.println("Signature Valid: "+signatureValid);
-        // HoneyEvent event2 = new HoneyEvent(batch1.batchId, "QUALITY_TESTED","ABC Labs", "Quality test passes","2026-09-06 12:00");
-        // HoneyEvent event3 = new HoneyEvent(batch1.batchId, "PACKAGED", "Processor","25 kg packaged into 50 jars","2026-09-07 6:00");
+        // System.out.println("Signature Valid: "+signatureValid);
+
+        //for prototype we will use same key pair
+        HoneyEvent event2 = new HoneyEvent(batch1.batchId, "QUALITY_TESTED","ABC Labs", "Quality test passes","2026-09-06 12:00");
+        event2.signEvent(privateKey,keys.getPublic());
+        HoneyEvent event3 = new HoneyEvent(batch1.batchId, "PACKAGED", "Processor","25 kg packaged into 50 jars","2026-09-07 6:00");
+        event3.signEvent(privateKey,keys.getPublic());
 
         blockChain.addBlock(event1);
-        // blockChain.addBlock(event2);
-        // blockChain.addBlock(event3);
+        blockChain.addBlock(event2);
+        blockChain.addBlock(event3);
 
         System.out.println("##################");
 
@@ -48,8 +38,6 @@ public class Main {
             System.out.println("Current block's hash: "+block.hash);
             System.out.println("---------------------");
         }
-
-        // blockChain.chain.get(1).data="Changed Data";
         System.out.println("Blockchain Valid: "+blockChain.isChainValid());
     }
 }
