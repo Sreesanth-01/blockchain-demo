@@ -2,6 +2,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.PrivateKey;
+import java.security.PublicKey;
 import java.security.Signature;
 
 public class DigitalSignature {
@@ -26,6 +27,22 @@ public class DigitalSignature {
             signature.update(data.getBytes(StandardCharsets.UTF_8));
 
             return signature.sign();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
+    public static boolean verifySign(String data,byte[] signatureBytes, PublicKey publicKey){
+        try {
+            Signature signature = Signature.getInstance("SHA256withECDSA");
+
+            signature.initVerify(publicKey);
+
+            signature.update(data.getBytes(StandardCharsets.UTF_8));
+
+            return signature.verify(signatureBytes);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
