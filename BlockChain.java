@@ -15,6 +15,11 @@ public class BlockChain {
 
     public void addBlock(HoneyEvent event){
 
+        if(!event.verifySignature()){
+            System.out.println("Event rejected: invalid signature");
+            return;
+        }
+
         Block previousBlock = chain.get(chain.size()-1);
 
         Block newBlock = new Block(chain.size(), event, previousBlock.hash);
@@ -23,6 +28,7 @@ public class BlockChain {
         // System.out.println("Finished mining...");
 
         chain.add(newBlock);
+        System.out.println("Event accepted into blockchain");
     }
 
     public boolean isChainValid(){
