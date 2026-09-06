@@ -28,6 +28,10 @@ public class Main {
 
         HoneyEvent event1 = new HoneyEvent(batch1.batchId, "HARVESTED","Beekeeper", "25 kg harvested from Hive H-101","2026-09-05 10:30");
         event1.signEvent(privateKey);
+
+        boolean signatureValid = event1.verifySignature(keys.getPublic());
+
+        System.out.println("Signature Valid: "+signatureValid);
         // HoneyEvent event2 = new HoneyEvent(batch1.batchId, "QUALITY_TESTED","ABC Labs", "Quality test passes","2026-09-06 12:00");
         // HoneyEvent event3 = new HoneyEvent(batch1.batchId, "PACKAGED", "Processor","25 kg packaged into 50 jars","2026-09-07 6:00");
 

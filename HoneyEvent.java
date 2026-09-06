@@ -1,5 +1,6 @@
 import java.nio.charset.StandardCharsets;
 import java.security.PrivateKey;
+import java.security.PublicKey;
 import java.security.Signature;
 import java.util.Base64;
 
@@ -35,6 +36,23 @@ public class HoneyEvent {
             byte[] signatureBytes = signature.sign();
 
             digitalSignature = Base64.getEncoder().encodeToString(signatureBytes);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean verifySignature(PublicKey publicKey){
+        try {
+            Signature signature = Signature.getInstance("SHA256withECDSA");
+
+            signature.initVerify(publicKey);
+
+            signature.update(getData().getBytes(StandardCharsets.UTF_8));
+
+            byte[] signatureBytes = Base64.getDecoder().decode(digitalSignature);
+
+            return signature.verify(signatureBytes);
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
