@@ -11,6 +11,7 @@ public class HoneyEvent {
     String details;
     String timestamp;
 
+    PublicKey signerPublicKey;
     String digitalSignature;
 
     public HoneyEvent(String batchId, String eventType, String actor, String details, String timestamp){
@@ -25,8 +26,10 @@ public class HoneyEvent {
         return batchId+eventType+actor+details+timestamp;
     }
 
-    public void signEvent(PrivateKey privateKey){
+    public void signEvent(PrivateKey privateKey,PublicKey publicKey){
         try {
+            this.signerPublicKey = publicKey;
+
             Signature signature = Signature.getInstance("SHA256withECDSA");
 
             signature.initSign(privateKey);
@@ -41,11 +44,15 @@ public class HoneyEvent {
         }
     }
 
-    public boolean verifySignature(PublicKey publicKey){
+    public boolean verifySignature(){
         try {
+            if(digitalSignature == null || signerPublicKey == null){
+                return false;
+            }
+
             Signature signature = Signature.getInstance("SHA256withECDSA");
 
-            signature.initVerify(publicKey);
+            signature.initVerify(signerPublicKey);
 
             signature.update(getData().getBytes(StandardCharsets.UTF_8));
 
